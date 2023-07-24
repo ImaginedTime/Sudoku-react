@@ -1,0 +1,8 @@
+.game {
+    width: 100vw;
+    height: 90vh;
+    background-color: #9646ff;
+    display: flex;
+    justify-content: space-evenly;
+}
+
