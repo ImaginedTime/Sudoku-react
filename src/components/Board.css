@@ -8,9 +8,9 @@
 }
 
 .cell{
-    border: 3px solid #B9B9B8;
+    border: 3px solid #eaeaea;
     border-radius: 50%;
-    background-color: #E6E7E7;
+    background-color: #D5CFE1;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -18,7 +18,23 @@
     font-size: 1.5rem;
 }
 
+/* .board .cell:nth-child(3n + 3){
+    margin-right: 5px;
+}
+
+.board .cell:nth-child(n+19):nth-child(-n+28){
+    margin-bottom: 5px;
+}
+
+.board .cell:nth-child(n+36):nth-child(-n+55){
+    margin-bottom: 5px;
+} */
+
 .selected-cell{
-    background-color: gray !important;
+    background-color: gray;
     color: white;
+}
+
+.disabled-cell{
+    background-color: white;
 }

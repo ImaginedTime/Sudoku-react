@@ -1,43 +1,56 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import './Board.css'
-import { useState } from 'react'
-
-import { Sudoku } from '../Sudoku.js'
-
-import {solveSudoku} from '../SudokuSolver.js'
-
+import { GameData } from './GameData'
 
 export default function Board() {
-    let sudoku = new Sudoku(9, 40);
-    sudoku.fillValues();
-    const [board, setBoard] = useState(sudoku.mat.flat(1));
-    const solvedSudokuBoard = solveSudoku(sudoku).flat(1);
 
-    const [selectedCell, setSelectedCell] = useState(null);
+    const { gameBoard, board, setBoard, selectedNumber, setSelectedNumber, selectedCell, setSelectedCell } = useContext(GameData);
 
-    const cellClicked = (index) => 
-    {
-        if(selectedCell == index)
+    const cellClicked = (index) => {
+        if (index == selectedCell && selectedNumber === null)
         {
             setSelectedCell(null);
+            return;
         }
-        else if(board[index] !== 0)
+        
+        if(selectedNumber == board[index] && gameBoard[index] === 0)
         {
+            let newBoard = [...board];
+            newBoard[index] = 0;
+            setBoard(newBoard);
             setSelectedCell(null);
+            return;
         }
-        else
+
+        if(gameBoard[index] !== 0)
         {
+            console.log("disabled cell");
+            setSelectedCell(null);
+            setSelectedNumber(null);
+            return;
+        }
+
+        if(selectedNumber !== null)
+        {
+            let newBoard = [...board];
+            newBoard[index] = selectedNumber;
+            setBoard(newBoard);
             setSelectedCell(index);
+            return;
         }
+
+        setSelectedCell(index);
+        console.log(index);
     }
 
     return (
         <div className='board'>
+            {console.log(gameBoard)}
             {board.map((value, index) => {
                 return (
-                    <div 
+                    <div
                         onClick={() => cellClicked(index)}
-                        className={`cell ${selectedCell == index && 'selected-cell'}`} 
+                        className={`cell ${selectedCell == index && 'selected-cell'} ${gameBoard[index] !== 0 && 'disabled-cell'}`}
                         key={index}>
                         {value === 0 ? '' : value}
                     </div>

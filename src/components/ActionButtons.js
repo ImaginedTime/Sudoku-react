@@ -1,21 +1,24 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import './ActionButtons.css'
-import pencil from './pencil.png'
-import cross from './cross.png'
 
-import { useState } from 'react'
+import { GameData } from './GameData';
 
 export default function ActionButtons() {
 
-    const [selectedNumber, setSelectedNumber] = useState(null);
+    const { gameBoard, board, setBoard, selectedNumber, setSelectedNumber, selectedCell, setSelectedCell } = useContext(GameData);
 
     const numberClicked = (number) => {
-
-        if (number == selectedNumber)
+        if (number === selectedNumber)
             setSelectedNumber(null);
-        else
+        else {
             setSelectedNumber(number);
-        console.log(number);
+            if (selectedCell !== null) {
+                let newBoard = [...board];
+                newBoard[selectedCell] = number;
+                setBoard(newBoard);
+                setSelectedCell(null);
+            }
+        }
     }
 
     const buttons = [1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -25,9 +28,9 @@ export default function ActionButtons() {
             <div className="numbers">
                 {
                     buttons.map((number, index) => {
-                    return <button 
-                            onClick={() => numberClicked(number)} 
-                            className={`${selectedNumber == number && 'selected-number'}`} 
+                        return <button
+                            onClick={() => numberClicked(number)}
+                            className={`${selectedNumber == number && 'selected-number'}`}
                             key={index} > {number} </button>
                     })
                 }
@@ -35,10 +38,10 @@ export default function ActionButtons() {
 
             <div className="actions">
                 <button className='pencil'>
-                    <img src={pencil} alt='pencil' width='20px' />
+                    <img src="./images/pencil.png" alt='pencil' width='20px' />
                 </button>
                 <button className='cross'>
-                    <img src={cross} alt="cross" width='20px' />
+                    <img src="./images/cross.png" alt="cross" width='20px' />
                 </button>
                 <button className='new-game'>New Game</button>
             </div>

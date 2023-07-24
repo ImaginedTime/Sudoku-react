@@ -139,7 +139,7 @@ export class Sudoku {
 	// Print sudoku
 	printSudoku() {
 		for (let i = 0; i < this.N; i++) {
-				console.log(this.mat[i].join(" "))
+			console.log(this.mat[i].join(" "))
 		}
 	}
 
