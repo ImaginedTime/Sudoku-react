@@ -31,6 +31,14 @@ export class Sudoku {
 		this.removeKDigits();
 	}
 
+	fillZeroes() {
+		this.mat = Array.from({
+			length: this.N
+		}, () => Array.from({
+			length: this.N
+		}, () => 0));
+	}
+
 	// Fill the diagonal SRN number of SRN x SRN matrices
 	fillDiagonal() {
 		for (let i = 0; i < this.N; i += this.SRN) {

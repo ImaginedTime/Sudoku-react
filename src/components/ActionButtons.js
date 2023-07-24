@@ -3,7 +3,7 @@ import './ActionButtons.css'
 
 import { GameData } from './GameData';
 
-export default function ActionButtons() {
+export default function ActionButtons({ restart }) {
 
     const { gameBoard, board, setBoard, selectedNumber, setSelectedNumber, selectedCell, setSelectedCell } = useContext(GameData);
 
@@ -43,7 +43,7 @@ export default function ActionButtons() {
                 <button className='cross'>
                     <img src="./images/cross.png" alt="cross" width='20px' />
                 </button>
-                <button className='new-game'>New Game</button>
+                <button className='new-game' onClick={restart}>New Game</button>
             </div>
         </div>
     )

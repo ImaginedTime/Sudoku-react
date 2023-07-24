@@ -45,7 +45,7 @@ export default function Board() {
 
     return (
         <div className='board'>
-            {console.log(gameBoard)}
+            {/* {console.log(gameBoard)} */}
             {board.map((value, index) => {
                 return (
                     <div

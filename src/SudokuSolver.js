@@ -52,7 +52,14 @@ function solve() {
 
 function solveSudoku(sudoku)
 {
-    mat = sudoku.mat;
+    mat = new Array(9);
+    for(let i = 0; i < 9; i++)
+    {
+        mat[i] = new Array(9);
+        for(let j = 0; j < 9; j++)
+            mat[i][j] = sudoku.mat[i][j];
+    }
+            
     solve();
     return mat;
 }
