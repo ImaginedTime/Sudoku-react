@@ -1,3 +1,5 @@
+To visit the page click on [this link here](https://sudoku-react-psi.vercel.app/)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
