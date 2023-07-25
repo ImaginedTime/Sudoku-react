@@ -45,7 +45,7 @@ export default function Board() {
             let newBoard = [...board];
             newBoard[index] = selectedNumber;
             setBoard(newBoard);
-            setSelectedCell(index);
+            setSelectedCell(null);
             return;
         }
 

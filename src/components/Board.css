@@ -10,7 +10,7 @@
 .cell{
     border: 3px solid #eaeaea;
     background-color: #D5CFE1;
-    border-radius: 50%;
+    /* border-radius: 50%; */
     display: flex;
     justify-content: center;
     align-items: center;
