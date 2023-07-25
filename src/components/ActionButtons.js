@@ -5,7 +5,7 @@ import { GameData } from './GameData';
 
 export default function ActionButtons({ restart }) {
 
-    const { gameBoard, board, setBoard, selectedNumber, setSelectedNumber, selectedCell, setSelectedCell } = useContext(GameData);
+    const { gameBoard, board, setBoard, selectedNumber, setSelectedNumber, selectedCell, setSelectedCell, crossOn, setCrossOn } = useContext(GameData);
 
     const numberClicked = (number) => {
         if (number === selectedNumber)
@@ -19,6 +19,12 @@ export default function ActionButtons({ restart }) {
                 setSelectedCell(null);
             }
         }
+        setCrossOn(false);
+    }
+
+    const crossClicked = () => {
+        setCrossOn(!crossOn);
+        selectedNumber !== null && setSelectedNumber(null);
     }
 
     const buttons = [1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -40,7 +46,7 @@ export default function ActionButtons({ restart }) {
                 <button className='pencil'>
                     <img src="./images/pencil.png" alt='pencil' width='20px' />
                 </button>
-                <button className='cross'>
+                <button className={`cross ${crossOn && 'cross-active'}`} onClick={crossClicked}>
                     <img src="./images/cross.png" alt="cross" width='20px' />
                 </button>
                 <button className='new-game' onClick={restart}>New Game</button>

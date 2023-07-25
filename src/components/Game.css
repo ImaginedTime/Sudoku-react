@@ -6,10 +6,3 @@
     justify-content: space-evenly;
 }
 
-.new-gaame{
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    transform: translate(-100%, -100%);
-}
-

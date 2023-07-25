@@ -16,6 +16,7 @@ export default function Game({ sudoku }) {
 	const [board, setBoard] = useState([...gameBoard]);
 	const [selectedCell, setSelectedCell] = useState(null);
 	const [selectedNumber, setSelectedNumber] = useState(null);
+	const [crossOn, setCrossOn] = useState(false);
 
 	const restart = () => {
 		sudoku.fillZeroes();
@@ -30,7 +31,7 @@ export default function Game({ sudoku }) {
 
 	return (
 		<div className='game'>
-			<GameData.Provider value={{ gameBoard, board, setBoard, selectedNumber, setSelectedNumber, selectedCell, setSelectedCell }}>
+			<GameData.Provider value={{ gameBoard, board, setBoard, selectedNumber, setSelectedNumber, selectedCell, setSelectedCell, crossOn, setCrossOn }}>
 				<Board />
 				<ActionButtons restart={ restart } />
 			</GameData.Provider>

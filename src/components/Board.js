@@ -4,9 +4,19 @@ import { GameData } from './GameData'
 
 export default function Board() {
 
-    const { gameBoard, board, setBoard, selectedNumber, setSelectedNumber, selectedCell, setSelectedCell } = useContext(GameData);
+    const { gameBoard, board, setBoard, selectedNumber, setSelectedNumber, selectedCell, setSelectedCell, crossOn } = useContext(GameData);
 
     const cellClicked = (index) => {
+
+        if(crossOn)
+        {
+            let newBoard = [...board];
+            newBoard[index] = 0;
+            setBoard(newBoard);
+            setSelectedCell(null);
+            return;
+        }
+
         if (index == selectedCell && selectedNumber === null)
         {
             setSelectedCell(null);
@@ -40,12 +50,10 @@ export default function Board() {
         }
 
         setSelectedCell(index);
-        console.log(index);
     }
 
     return (
         <div className='board'>
-            {/* {console.log(gameBoard)} */}
             {board.map((value, index) => {
                 return (
                     <div
