@@ -17,13 +17,13 @@ export default function Board() {
             return;
         }
 
-        if (index == selectedCell && selectedNumber === null)
+        if (index === selectedCell && selectedNumber === null)
         {
             setSelectedCell(null);
             return;
         }
         
-        if(selectedNumber == board[index] && gameBoard[index] === 0)
+        if(selectedNumber === board[index] && gameBoard[index] === 0)
         {
             let newBoard = [...board];
             newBoard[index] = 0;
@@ -52,6 +52,7 @@ export default function Board() {
         setSelectedCell(index);
     }
 
+    
     return (
         <div className='board'>
             {board.map((value, index) => {

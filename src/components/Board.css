@@ -9,8 +9,8 @@
 
 .cell{
     border: 3px solid #eaeaea;
-    border-radius: 50%;
     background-color: #D5CFE1;
+    border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -18,17 +18,42 @@
     font-size: 1.5rem;
 }
 
-/* .board .cell:nth-child(3n + 3){
-    margin-right: 5px;
+.cell-circle{
+    border-radius: 50%;
 }
 
-.board .cell:nth-child(n+19):nth-child(-n+28){
-    margin-bottom: 5px;
+
+/* first and second vertical lines with some extra columns */
+.board .cell:nth-child(3n + 3){
+    border-right: 3px solid black;
+}
+.board .cell:nth-child(3n + 4){
+    border-left: 3px solid black;
 }
 
-.board .cell:nth-child(n+36):nth-child(-n+55){
-    margin-bottom: 5px;
-} */
+/* removing those extra columns from the vertical lines */
+.board .cell:nth-child(9n){
+    border-right: 3px solid #eaeaea;
+}
+.board .cell:nth-child(9n + 1){
+    border-left: 3px solid #eaeaea;
+}
+
+/* first horizontal line */
+.board .cell:nth-child(n+19):nth-child(-n+27){
+    border-bottom: 3px solid black;
+}
+.board .cell:nth-child(n+28):nth-child(-n+36){
+    border-top: 3px solid black;
+}
+
+/* second horizontal line */
+.board .cell:nth-child(n+46):nth-child(-n+54){
+    border-bottom: 3px solid black;
+}
+.board .cell:nth-child(n+55):nth-child(-n+63){
+    border-top: 3px solid black;
+}
 
 .selected-cell{
     background-color: gray;
